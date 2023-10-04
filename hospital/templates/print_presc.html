@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            font-size: 16px;
+        } 
+        h1 {
+            background: #ff612c;
+        }
+        header {
+            margin-left: 70%;
+        }
+        .cont {
+            width: 100%;
+            height: 90%;
+                }
+        .box{
+  
+            position:relative;
+            padding-left: 10%;
+            padding-right: 30%;
+            width: 80%;
+            height: 90%;
+            /* display:flex;
+        }; */
+            font-size: 16px
+       
+        }
+        .ab{
+            
+            position: relative;
+            display: flex;
+        }
+        .ac{
+            width: 50%;
+            
+        }
+        .ad{
+            width: 50%;
+        }
+        .a{ border-radius: 5%;
+            background-color: darkblue;
+            color: aliceblue;
+        }
+        .b{
+            position:relative;
+            
+            width: 60%;
+            height: 90%;
+
+        }
+        .booktab {
+        /* width: 0%; */
+
+        table-layout: fixed;
+        border-collapse: collapse;
+        width: 100%;
+        /* width: 100%; */
+  
+}
+    footer {
+        padding-top: 100%;
+        padding-bottom: 10%;
+    }
+    </style>
+    
+  </head>
+  <body>
+    <div class="cont">
+    <div class="box">
+        <header>
+            <h3>M.:6205848471, 8825221330</h3>
+            <h3>Email:chy.ankit@outlook.com</h3>
+        </header>
+        <div class="a">
+            <center class="asd">
+            <h1>JAY SHREE RAM HOSPITAL</h1>
+            </center>
+        </div>
+        <div>
+           
+            <h3>Makaut Boys Hospital, Near Haringhata Farm, Nadia-848130 </h3>
+            <h3>Timing: 8:00 A.M. to 6.00 P.M.</h3>
+        
+        </div>
+        <hr>
+        <div class="ab">
+            <div class="ad">
+                
+                <h2>Patient Name: Mr. {{patient.name}}</h2>
+                <h2> SEX:  {{patient.gender}} </h2>
+                <h2>DOB:  {{patient.dob}}</h2>
+                
+            </div>
+            <div class="ac">
+                <h2>Blood Group: {{patient.bg}}</h2>
+                {% for appoint in patient.appointments%}
+                <h2>Date: {{appoint.date}}</h2>
+                {%endfor%}
+            </div>
+        </div>
+        <hr>
+        <div class="b">
+            <h2>Advice</h2>
+            <table class="booktab">
+               
+                {% if patient.prescriptions[0] %}
+                <tr>
+                    <th><h2>Medicine</h2></th>
+                    <th><h2>Dosage</h2></th>
+                    <th><h2>Advice</h2></th>
+                
+                </tr>
+                {% for presc in patient.prescriptions %}
+                        
+                        <tr>
+                            <td><h3>{{ presc.medicine }}</h3></td>
+                            <td><h3>{{ presc.dosage }}</h3></td>
+                            <td><h3>{{presc.advice}} </h3></td>
+                        
+                        </tr>
+                        
+                    {% endfor %}
+                    
+                {% else %}
+                        <center><h3>No Prescription</h3></center>
+                    {% endif%}
+                    
+            </div>
+            </div>
+            </table>	
+        </div>
+        <footer>
+            <hr>
+             <h2>Dedicated to the Service of ailing humanity</h2>
+        </footer>
+    </div>
+</div>
+  </body>
+</html>
